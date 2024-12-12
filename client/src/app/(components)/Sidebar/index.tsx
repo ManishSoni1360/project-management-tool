@@ -1,7 +1,7 @@
 "use client"
 import { useAppDispatch, useAppSelector } from '@/app/redux';
 import { setIsSidebarCollapsed } from '@/state';
-import { Briefcase, ChevronDown, ChevronUp, Home, Icon, LockIcon, LucideIcon, Search, Settings, User, Users, X } from 'lucide-react';
+import { AlertCircle, AlertOctagon, AlertTriangle, Briefcase, ChevronDown, ChevronUp, Home, Icon, Layers3, LockIcon, LucideIcon, Search, Settings, ShieldAlert, User, Users, X } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -17,7 +17,7 @@ const Sidebar = () => {
   return (
     <div className={`fixed flex flex-col justify-between shadow-xl transition-all duration-300 h-full z-40 dark:bg-black overflow-y-auto bg-white w-64 ${isSidebarCollapsed ? "w-0 hidden" : "w-64"}`}>
       <div className='flex h-[100%] w-full flex-col justify-start'>
-        
+
         {/* TOP LOGO */}
         <div className='z-50 flex min-h-[56px] w-64 items-center justify-between bg-white px-6 pt-3 dark:bg-black'>
           <div className='text-xl font-bold text-gray-800 dark:text-white'>
@@ -58,6 +58,42 @@ const Sidebar = () => {
           <SidebarLink icon={User} label="Users" href="/users" />
           <SidebarLink icon={Users} label="Teams" href="/teams" />
         </nav>
+
+        {/* PROJECTS LINKS */}
+        <button
+          onClick={() => setShowProjects((prev) => !prev)}
+          className="flex w-full items-center justify-between px-8 py-3 text-gray-500"
+        >
+          <span className="">Projects</span>
+          {showProjects ? (
+            <ChevronUp className="h-5 w-5" />
+          ) : (
+            <ChevronDown className="h-5 w-5" />
+          )}
+        </button>
+
+        {/* PRIORITIES LINKS */}
+        <button
+          onClick={() => setShowPriority((prev) => !prev)}
+          className="flex w-full items-center justify-between px-8 py-3 text-gray-500"
+        >
+          <span className="">Priority</span>
+          {showPriority ? (
+            <ChevronUp className="h-5 w-5" />
+          ) : (
+            <ChevronDown className="h-5 w-5" />
+          )}
+        </button>
+        {showPriority && (
+          <>
+            <SidebarLink icon={AlertCircle} label="Urgent" href="/priority/urgent"/>
+            <SidebarLink icon={ShieldAlert} label="High" href="/priority/high"/>
+            <SidebarLink icon={AlertTriangle} label="Medium" href="/priority/medium"/>
+            <SidebarLink icon={AlertOctagon} label="Low" href="/priority/low" />
+            <SidebarLink icon={Layers3} label="Backlog" href="/priority/backlog"
+            />
+          </>
+        )}
       </div>
     </div>
   )
