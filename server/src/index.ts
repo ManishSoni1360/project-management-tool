@@ -5,6 +5,10 @@ import cors from "cors";
 import helmet from "helmet";
 import morgan from "morgan";
 
+// ROUTES IMPORTS
+import projectRoute from "./routes/projectRoute";
+
+// COMFIGURATIONS
 dotenv.config();
 
 const app = express();
@@ -17,10 +21,14 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
 
+// ROUTES
 app.get("/", (req, res) => {
   res.send("This is home route!");
 });
 
+app.use("/projects", projectRoute);
+
+// SERVER
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
