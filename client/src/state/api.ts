@@ -5,11 +5,11 @@ export const api = createApi({
   reducerPath: "api",
   tagTypes: ["Projects", "Tasks"],
   endpoints: (build) => ({
-    getProjects: build.query<Project[], void>({
+    getProjects: build.query<ProjectType[], void>({
       query: () => "projects",
       providesTags: ["Projects"],
     }),
-    createProject: build.mutation<Project, Partial<Project>>({
+    createProject: build.mutation<ProjectType, Partial<ProjectType>>({
       query: (project) => ({
         url: "projects",
         method: "POST",
@@ -17,14 +17,14 @@ export const api = createApi({
       }),
       invalidatesTags: ["Projects"],
     }),
-    getTasks: build.query<Task[], { projectId: number }>({
+    getTasks: build.query<TaskType[], { projectId: number }>({
       query: ({ projectId }) => `tasks?projectId=${projectId}`,
       providesTags: (result) =>
         result
           ? result.map(({ id }) => ({ type: "Tasks" as const, id }))
           : [{ type: "Tasks" }],
     }),
-    createTask: build.mutation<Task, Partial<Project>>({
+    createTask: build.mutation<TaskType, Partial<ProjectType>>({
       query: (task) => ({
         url: "tasks",
         method: "POST",
@@ -32,7 +32,10 @@ export const api = createApi({
       }),
       invalidatesTags: ["Tasks"],
     }),
-    updateTaskStatus: build.mutation<Task, { taskId: number; status: string }>({
+    updateTaskStatus: build.mutation<
+      TaskType,
+      { taskId: number; status: string }
+    >({
       query: ({ taskId, status }) => ({
         url: `tasks/${taskId}/status`,
         method: "PATCH",
@@ -50,4 +53,5 @@ export const {
   useCreateProjectMutation,
   useGetTasksQuery,
   useCreateTaskMutation,
+  useUpdateTaskStatusMutation,
 } = api;

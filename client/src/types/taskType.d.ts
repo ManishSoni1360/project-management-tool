@@ -1,4 +1,4 @@
-enum Priority {
+enum PriorityType {
   Urgent = "Urgent",
   High = "High",
   Medium = "Medium",
@@ -6,14 +6,14 @@ enum Priority {
   Backlog = "Backlog",
 }
 
-enum Status {
+enum StatusType {
   ToDo = "To Do",
   WorkInProgress = "Work In Progress",
   UnderReview = "Under Review",
   Completed = "Completed",
 }
 
-interface User {
+interface UserType {
   userId?: number;
   username: string;
   email: string;
@@ -22,7 +22,7 @@ interface User {
   teamId?: number;
 }
 
-interface Attachment {
+interface AttachmentType {
   id: number;
   fileURL: string;
   fileName: string;
@@ -30,12 +30,12 @@ interface Attachment {
   uploadedById: number;
 }
 
-interface Task {
+interface TaskType {
   id: number;
   title: string;
   description?: string;
-  status?: Status;
-  priority?: Priority;
+  status?: StatusType;
+  priority?: PriorityType;
   tags?: string;
   startDate?: string;
   dueDate?: string;
@@ -44,8 +44,8 @@ interface Task {
   authorUserId?: number;
   assignedUserId?: number;
 
-  author?: User;
-  assignee?: User;
+  author?: UserType;
+  assignee?: UserType;
   comments?: Comment[];
-  attachments?: Attachment[];
+  attachments?: AttachmentType[];
 }
