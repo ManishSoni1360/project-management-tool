@@ -1,6 +1,7 @@
 "use client";
 import BoardView from "@/components/Project/BoardView";
 import ProjectHeader from "@/components/Project/ProjectHeader";
+import TableView from "@/components/Project/TableView";
 import TimelineView from "@/components/Project/TimelineView";
 import { useParams } from "next/navigation";
 import React, { useState } from "react";
@@ -23,6 +24,13 @@ const Project = () => {
 
       {activeTab === "Timeline" && (
         <TimelineView
+          id={id as string}
+          setIsModalNewTaskOpen={setIsModelNewTaskOpen}
+        />
+      )}
+
+      {activeTab === "Table" && (
+        <TableView
           id={id as string}
           setIsModalNewTaskOpen={setIsModelNewTaskOpen}
         />
