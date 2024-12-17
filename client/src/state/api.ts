@@ -24,7 +24,7 @@ export const api = createApi({
           ? result.map(({ id }) => ({ type: "Tasks" as const, id }))
           : [{ type: "Tasks" }],
     }),
-    createTask: build.mutation<TaskType, Partial<ProjectType>>({
+    createTask: build.mutation<TaskType, Partial<TaskType>>({
       query: (task) => ({
         url: "tasks",
         method: "POST",

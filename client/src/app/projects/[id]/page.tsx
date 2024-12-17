@@ -1,4 +1,5 @@
 "use client";
+import ModalNewTask from "@/components/ModalNewTask";
 import BoardView from "@/components/Project/BoardView";
 import ProjectHeader from "@/components/Project/ProjectHeader";
 import TableView from "@/components/Project/TableView";
@@ -14,6 +15,11 @@ const Project = () => {
   return (
     <div>
       {/* MODAL NEW TASK */}
+      <ModalNewTask
+        isOpen={isModalNewTaskOpen}
+        onClose={() => setIsModelNewTaskOpen(false)}
+        id={id as string}
+      />
       <ProjectHeader activeTab={activeTab} setActiveTab={setActiveTab} />
       {activeTab === "Board" && (
         <BoardView
