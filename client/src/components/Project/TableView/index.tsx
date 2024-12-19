@@ -14,17 +14,20 @@ const columns: GridColDef[] = [
   {
     field: "title",
     headerName: "Title",
-    width: 100,
+    flex: 1,
+    minWidth: 100,
   },
   {
     field: "description",
     headerName: "Description",
-    width: 200,
+    flex: 1,
+    minWidth: 200,
   },
   {
     field: "status",
     headerName: "Status",
-    width: 130,
+    flex: 1,
+    minWidth: 130,
     renderCell: (params) => (
       <span className="inline-flex rounded-full bg-green-100 px-2 text-xs font-semibold leading-5 text-green-800">
         {params.value}
@@ -34,33 +37,39 @@ const columns: GridColDef[] = [
   {
     field: "priority",
     headerName: "Priority",
-    width: 75,
+    flex: 1,
+    minWidth: 100,
   },
   {
     field: "tags",
     headerName: "Tags",
-    width: 130,
+    flex: 1,
+    minWidth: 100,
   },
   {
     field: "startDate",
     headerName: "Start Date",
-    width: 130,
+    flex: 1,
+    minWidth: 100,
   },
   {
     field: "dueDate",
     headerName: "Due Date",
-    width: 130,
+    flex: 1,
+    minWidth: 100,
   },
   {
     field: "author",
     headerName: "Author",
-    width: 150,
+    flex: 1,
+    minWidth: 150,
     renderCell: (params) => params.value?.author || "Unknown",
   },
   {
     field: "assignee",
     headerName: "Assignee",
-    width: 150,
+    flex: 1,
+    minWidth: 150,
     renderCell: (params) => params.value?.assignee || "Unassigned",
   },
 ];
