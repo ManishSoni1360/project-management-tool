@@ -41,9 +41,9 @@ const Sidebar = () => {
     >
       <div className="flex h-[100%] w-full flex-col justify-start">
         {/* TOP LOGO */}
-        <div className="z-50 flex min-h-[56px] w-64 items-center justify-between bg-white px-6 pt-3 dark:bg-black">
-          <div className="text-xl font-bold text-gray-800 dark:text-white">
-            PROJLIST
+        <div className="z-50 flex min-h-[56px] w-64 items-center justify-between bg-white px-6 pt-1 dark:bg-black">
+          <div className="text-2xl font-bold text-gray-800 dark:text-white">
+            TaskNest
           </div>
           {isSidebarCollapsed ? null : (
             <button
@@ -58,8 +58,14 @@ const Sidebar = () => {
         </div>
 
         {/* TEAM */}
-        <div className="flex items-center gap-5 border-y-[1.5px] border-gray-200 px-8 py-4">
-          <Image src="/logo.png" alt="Logo" width={40} height={40} />
+        <div className="flex items-center gap-5 border-y-[1.5px] border-gray-200 px-8 py-3">
+          <Image
+            src="/logo.png"
+            alt="Logo"
+            width={40}
+            height={40}
+            className="rotate-90"
+          />
           <div>
             <h3 className="text-md font-bold tracking-wide dark:text-gray-200">
               DEV TEAM
