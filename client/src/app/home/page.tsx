@@ -19,6 +19,7 @@ import {
   YAxis,
 } from "recharts";
 import { dataGridClassNames, dataGridSxStyles } from "@/lib/utils";
+import ProjectLoader from "@/skeleton/Project";
 
 const taskColumns: GridColDef[] = [
   { field: "title", headerName: "Title", width: 200 },
@@ -44,7 +45,7 @@ function HomePage() {
 
   const isDarkMode = useAppSelector((state) => state.global.isDarkMode);
 
-  if (isTaskLoading || isProjectLoading) return <div>Loading...</div>;
+  if (isTaskLoading || isProjectLoading) return <ProjectLoader />;
   if (isTaskError || !tasks || !projects || isProjectError)
     return <div>Error fetching data</div>;
 
